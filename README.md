@@ -1,32 +1,54 @@
 # Data-Managment-CheatSheet---Unix-Shell
 Draft project: Ongoing work to build a comprehansive cheatsheet for Data managment using Unix Shell .. It is inspired by the Open source community ands
 
-MC commands
-
+**Midnight Commander**
 ---
-sudo apt 
+
+Install
+```
+
+sudo apt install mc
+
+```
+```
+mc
+```
+
+**sed commands**
 ----
 
-sudo apt
+**ssh commands**
+----
 
-sid commands
+ssh -J
 
-ssh commands
+**rsync commands**
+----
 
---ssh -J
+**mv commands**
+----
 
-rsync commands
+**cp commands**
+----
 
-mv commands
+**scp commands**
+----
 
-cp commands
-
-scp commands
-
-history commands
+**history commands**
+----
 
 history | grep " "
 
-rm commands
 
+**rm commands**
+---
 rm -rf 
+
+**wget**
+----
+
+curl 
+----
+
+git 
+---
