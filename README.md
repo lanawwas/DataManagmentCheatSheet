@@ -3,6 +3,12 @@ Draft project: Ongoing work to build a comprehansive cheatsheet for Data managme
 
 MC commands
 
+---
+sudo apt 
+----
+
+sudo apt
+
 sid commands
 
 ssh commands
