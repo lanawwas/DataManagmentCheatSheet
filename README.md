@@ -40,9 +40,7 @@ ssh -J
 history | grep " "
 
 
-**rm commands**
----
-rm -rf 
+
 
 **wget**
 ----
@@ -53,11 +51,19 @@ curl
 git 
 ---
 
-Command line operations: 
+**Command line operations:**
 
 change directory cd 
 
 create new directory mkdir
+
+delete file 
+---
+rm -rf 
+
+delete directory 
+
+rm -rdf 
 
 change owner chown
 
@@ -65,4 +71,5 @@ change read/write mode chmod
 
 mount directory mnt 
 
+list directories ls 
 
