@@ -52,3 +52,17 @@ curl
 
 git 
 ---
+
+Command line operations: 
+
+change directory cd 
+
+create new directory mkdir
+
+change owner chown
+
+change read/write mode chmod 
+
+mount directory mnt 
+
+
