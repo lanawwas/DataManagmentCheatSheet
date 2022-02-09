@@ -89,3 +89,7 @@ mount directory mnt
 
 list directories ls 
 
+**Java**
+
+https://dev.to/thegroo/install-and-manage-multiple-java-versions-on-linux-using-alternatives-5e93
+
