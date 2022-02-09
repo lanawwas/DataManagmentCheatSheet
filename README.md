@@ -48,6 +48,8 @@ history | grep " "
 curl 
 ----
 
+shell curl -O https:
+
 git 
 ---
 
