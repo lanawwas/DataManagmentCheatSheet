@@ -14,6 +14,36 @@ sudo apt install mc
 mc
 ```
 
+**Vim/Vi**
+
+[Reference](https://linuxtect.com/how-to-select-all-in-vim-vi/)
+
+#Then gg command is to move the cursor to the start of the file
+
+``` 
+gg
+
+```
+
+
+ #The yy command is used to yank or copy the current line, but providing the line count can select and copy the number of lines specified 
+
+``` 
+yy 
+
+```
+
+ #Select and Delete All Lines
+
+```
+:%d
+```
+ #Select and Copy All Lines
+
+```
+:%y
+```
+
 **sed commands**
 ----
 
@@ -68,6 +98,9 @@ Confirm that you have set the Git username correctly:
 $ git config --global user.name
 
 omit --global if you are only want to look at the username configuration in the local repository.
+
+https://git-scm.com/docs/gitignore 
+
 
 **Command line operations:**
 
