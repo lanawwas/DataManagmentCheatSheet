@@ -101,6 +101,7 @@ omit --global if you are only want to look at the username configuration in the 
 
 https://git-scm.com/docs/gitignore 
 
+https://github.com/github/gitignore/blob/8ea9c647018521ab2a9c78d630a2fb6579e16d37/Python.gitignore
 
 **Command line operations:**
 
