@@ -127,5 +127,9 @@ list directories ls
 
 **Java**
 
+Show the default heap memory size
+
+java -XshowSettings:vm
+
 https://dev.to/thegroo/install-and-manage-multiple-java-versions-on-linux-using-alternatives-5e93
 
