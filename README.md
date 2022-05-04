@@ -139,4 +139,12 @@ https://www.baeldung.com/maven-dependency-latest-version
 
 mvn versions:display-dependency-updates
 
+** Text Processing*
+
+Copy content of one text file and paste it into another file
+
+cat mockdata_frailty_2021-2.ttl | tee -a mockdata_frailty_2021-LAN.ttl 
+
+https://unix.stackexchange.com/questions/284223/duplicate-the-content-of-a-file
+
 
