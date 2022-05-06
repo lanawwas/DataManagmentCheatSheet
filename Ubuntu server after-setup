@@ -20,6 +20,8 @@ https://phoenixnap.com/kb/ssh-to-connect-to-remote-server-linux-or-windows
 
 https://phoenixnap.com/kb/linux-ssh-security
 
+https://linuxhandbook.com/ssh-hardening-tips/
+
 Change the congiuration in etc/ssh/sshd_config :
 1. Change default port number. 
 2. Use SSH key pairs for authentication
