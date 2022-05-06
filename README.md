@@ -147,4 +147,6 @@ cat mockdata_frailty_2021-2.ttl | tee -a mockdata_frailty_2021-LAN.ttl
 
 https://unix.stackexchange.com/questions/284223/duplicate-the-content-of-a-file
 
+**rst**
 
+https://docutils.sourceforge.io/docs/ref/rst/directives.html#default-role
