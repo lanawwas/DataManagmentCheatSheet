@@ -2,3 +2,5 @@ sudo apt update && sudo apt dist-upgrade -y
 sudo apt install build-essential
 sudo vim /etc/ssh/sshd.config
 ssh-keygen -t rsa -b 4096
+
+https://linuxize.com/post/how-to-install-virtualbox-guest-additions-in-ubuntu/
