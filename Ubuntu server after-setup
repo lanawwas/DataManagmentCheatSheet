@@ -4,3 +4,18 @@ sudo vim /etc/ssh/sshd.config
 ssh-keygen -t rsa -b 4096
 
 https://linuxize.com/post/how-to-install-virtualbox-guest-additions-in-ubuntu/
+
+
+
+On remote after copying rsa.pub key of the local machine, you can add the identiy to the remote authrised
+
+https://www.ssh.com/academy/ssh/copy-id
+https://phoenixnap.com/kb/setup-passwordless-ssh
+
+There is already a command in the ssh suite to do this automatically for you. I.e log into a remote host and add the public key to that computers authorized_keys file.
+
+ssh-copy-id -i /path/to/key/file user@host.com
+
+If the key you are installing is ~/.ssh/id_rsa then you can even drop the -i flag completely.
+
+Much better than manually doing it!
