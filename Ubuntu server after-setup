@@ -31,3 +31,7 @@ Change the congiuration in etc/ssh/sshd_config :
 Install fail2ban
 
 https://linuxhandbook.com/fail2ban-basic/
+
+UFU settings to allow cusotm port for ssh after enable
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
