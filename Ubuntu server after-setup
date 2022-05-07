@@ -35,3 +35,6 @@ https://linuxhandbook.com/fail2ban-basic/
 UFU settings to allow cusotm port for ssh after enable
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
+
+
+Adding Swap : https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/
