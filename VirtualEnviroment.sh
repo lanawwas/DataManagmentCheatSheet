@@ -49,4 +49,5 @@ fi
 #
 #TODO
 #adding enviroments variable to set DJANG_PATH and REQUIRMETS_PATH.
+#Deactivate the virtual enviroment https://stackoverflow.com/questions/29545624/how-to-deactivate-virtualenv-from-a-bash-script
 #
