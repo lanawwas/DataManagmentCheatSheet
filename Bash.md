@@ -141,6 +141,6 @@ https://docutils.sourceforge.io/docs/ref/rst/directives.html#default-role
 Reference and Custom anchor
 https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#links-to-sections-in-the-same-document
 
-**Bash .sh scripting: 
+#Bash .sh scripting: 
 
 Got the user input: https://stackoverflow.com/questions/5542016/bash-user-input-if
