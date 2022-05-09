@@ -137,3 +137,6 @@ https://unix.stackexchange.com/questions/284223/duplicate-the-content-of-a-file
 **rst**
 
 https://docutils.sourceforge.io/docs/ref/rst/directives.html#default-role
+
+Reference and Custom anchor
+https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#links-to-sections-in-the-same-document
