@@ -122,3 +122,11 @@ https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#links-
 # Bash .sh scripting: 
 
 Got the user input: https://stackoverflow.com/questions/5542016/bash-user-input-if
+
+# Text file follow with updates 
+
+tail -f file.txt: 
+
+
+
+
