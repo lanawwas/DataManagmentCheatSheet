@@ -43,6 +43,11 @@ yy
 ```
 :%y
 ```
+#Go to the end of the file, use capital G
+```
+G
+```
+
 
 **sed commands**
 ----
