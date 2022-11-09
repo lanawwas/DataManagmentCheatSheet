@@ -133,5 +133,15 @@ Got the user input: https://stackoverflow.com/questions/5542016/bash-user-input-
 tail -f file.txt: 
 
 
+**Count number of files in directory**
 
+ls -1 | wc -l
+
+**Show directory size**
+
+du -bch
+
+Or
+
+Ls -lh
 
