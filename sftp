@@ -1,0 +1,9 @@
+https://man.openbsd.org/sftp#reget
+
+
+# Download remote folder to local 
+
+get -aR 
+
+reget 
+
