@@ -7,3 +7,7 @@ get -aR
 
 reget 
 
+# count remote sftp files in a specific directories 
+
+ echo ls -l /the/remote/directory | sftp username@server | grep -v '^sftp' | wc -l
+
