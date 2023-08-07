@@ -23,3 +23,6 @@ db.<db_name>.getIndexes()
 ```
 db.<db_name>.dropIndex("<index?name>")
 ```
+###Query
+#Count number of null values in a nested field in database 
+db.<database_name>.find('<field?name>.<nested?field>: null).count()
