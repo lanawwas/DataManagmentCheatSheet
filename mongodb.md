@@ -15,3 +15,7 @@ show dbs
 ```
 use <database_name>
 ```
+#list the current db indexes 
+```
+db.<db_name>.getIndexes()
+```
