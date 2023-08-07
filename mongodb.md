@@ -19,3 +19,7 @@ use <database_name>
 ```
 db.<db_name>.getIndexes()
 ```
+#drop current index
+```
+db.<db_name>.dropIndex("<index?name>")
+```
