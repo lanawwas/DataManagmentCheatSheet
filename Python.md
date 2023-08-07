@@ -9,4 +9,4 @@ Create a virtual enviroment in a specific path #the name if the virtual envirome
 
 ```bash 
 
-python -m venv env/vm1 
+python -m venv ~/<NameOfVirtualEnviroment>/ 
