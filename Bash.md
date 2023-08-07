@@ -26,7 +26,7 @@ gg
 ```
 
 
- #The yy command is used to yank or copy the current line, but providing the line count can select and copy the number of lines specified 
+# The yy command is used to yank or copy the current line, but providing the line count can select and copy the number of lines specified 
 
 ``` 
 yy 
