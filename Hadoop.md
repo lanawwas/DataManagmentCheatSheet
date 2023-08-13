@@ -18,6 +18,6 @@ Install
 
 [Reference]()
 
-#Then gg command is to move the cursor to the start of the file
+#
 
 ``` 
