@@ -49,8 +49,23 @@ df = sqlContext.read.load('file://<?path_to_file_.csv>',
 format='com.databricks.spark.csv', header='true', inferSchema='true' )
 ````
 
+# Show csv schema and explore 
+
+### columns 
+
 ```python
 df.columns
+```
+### schema
+
+```python
+df.printSchema()
+```
+
+### Summary statistics 
+
+```python
+df.describe().toPandas().transpose
 ```
 
 
