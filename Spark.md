@@ -1,39 +1,35 @@
 #pyspark with jupter installtion 
 
-```
+```bash
 python -m venv spark
 ```
 
-```
+```bash
 source spark/bin/activate
 ```
 
-```
-
+```bash
 pip install --upgrade pip 
-
 ```
 
-```
-
+```bash
 pip install notebook
 ```
 
 
-```
+```bash
 pip install pyspark
 ```
 
 
-```
+```bash
 pip install findspark
-
 ```
 
 #pyspark define inside notebook 
 
 
-```
+```python
 import findspark
 findspark.init()
 import pyspark
@@ -48,12 +44,12 @@ sqlContext = SQLContext(sc)
 
 # pyspark read data from csv file
 
-```
+```python
 df = sqlContext.read.load('file://<?path_to_file_.csv>',
 format='com.databricks.spark.csv', header='true', inferSchema='true' )
-```` 
+````
 
-```
+```python
 df.columns
 ```
 
