@@ -1,4 +1,4 @@
-# pyspark with jupter installtion 
+# pyspark with jupter installtion
 
 ```bash
 python -m venv spark
