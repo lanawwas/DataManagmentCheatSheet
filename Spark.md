@@ -54,7 +54,7 @@ df.columns
 ```
 
 
-#pyspark connect to SQL postgresql
+# pyspark connect to SQL postgresql
 
 Correct configuration of postgresql or other sql jar in the env virtual 
 
