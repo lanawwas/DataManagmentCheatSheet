@@ -74,6 +74,18 @@ df.describe().toPandas().transpose
 removeAllDF= df.na.drop()
 ```
 
+### Replace missing values with the column mean
+
+```python
+from pyspark.sql.functions import avg
+imputeDF = df
+
+for x in imputeDF.columns:
+    meanValue = removeAllDF.agg(avg(x)).first()[0]
+    print(x, meanValue)
+    imputeDF = imputeDF.na.fill(meanValue, [x])
+```
+
 # pyspark connect to SQL postgresql
 
 Correct configuration of postgresql or other sql jar in the env virtual 
