@@ -68,6 +68,11 @@ df.printSchema()
 df.describe().toPandas().transpose
 ```
 
+### Remove all missing values from dataframe
+
+```python
+removeAllDF= df.na.drop()
+```
 
 # pyspark connect to SQL postgresql
 
