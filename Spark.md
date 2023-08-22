@@ -40,7 +40,7 @@ sc = SparkContext.getOrCreate()
 
 sqlContext = SQLContext(sc)
 ```
-
+reference : https://medium.com/sicara/get-started-pyspark-jupyter-guide-tutorial-ae2fe84f594f
 
 # pyspark read data from csv file
 
