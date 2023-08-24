@@ -145,3 +145,8 @@ Or
 
 Ls -lh
 
+**Show Ubuntu Version**
+
+```bash
+ lsb_release -a
+```
