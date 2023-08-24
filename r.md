@@ -56,5 +56,25 @@ tibble::glimpse(df)
 df2 <- subset(df, select = -c(?column1, column2,....,columnN))
 ```
 
+### Filter Operations 
+
+Filter Rows by a column value
+```r
+filter(df, ?column == '?value')
+```
+
+Filter Rows by list of column Values
+```r
+filter(df, ?column %in% c('?val1','?val2','?val3'))
+```
+Filter Rows by Checking values on Multiple Columns
+```r
+filter(df, ?column1 == '?value1' & ?column2 >?value2)
+```
+
+Filter DataFrame by column name column2 and column3.
+```r
+subset(df,?column1 == '?value',select = c('column2','column3'))
+```
 # r connect to SQL postgresql
 
