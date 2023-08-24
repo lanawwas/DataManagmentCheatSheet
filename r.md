@@ -1,26 +1,27 @@
 # R and Rstudio installtion in ubuntu 20.04
 
 ```bash
+sudo apt install r-base
 ```
 
 ```bash
+sudo apt install r-cran-rstan r-cran-tidyverse
 ```
 
 ```bash
+wget https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.06.2-561-amd64.deb
+
 ```
 
 ```bash
+sudo apt install -f ./rstudio-2023.06.2-561-amd64.deb
 ```
 
 
 ```bash
+rstudio
 ```
 
-
-```bash
-```
-
-reference : https://medium.com/sicara/get-started-pyspark-jupyter-guide-tutorial-ae2fe84f594f
 
 # rstudio read data from csv file
 
