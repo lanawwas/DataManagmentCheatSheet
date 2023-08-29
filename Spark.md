@@ -86,6 +86,17 @@ for x in imputeDF.columns:
     imputeDF = imputeDF.na.fill(meanValue, [x])
 ```
 
+### Select specific columns
+
+```python
+featureColumns = ['?çolumn1','?column2',....'?columnN']
+```
+
+### Drop specific columns from df
+```python
+df = df.drop('?çolumn1','?column2',....'?columnN')
+```
+
 # pyspark connect to SQL postgresql
 
 Correct configuration of postgresql or other sql jar in the env virtual 
