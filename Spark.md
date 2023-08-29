@@ -129,6 +129,18 @@ assembled = assembler.transform(binarizedDF) # apply the transformation into ass
 ```python
 dt = DecisionTreeClassifier(labelCol='label', featuresCol="features", maxDepth=5, minInstancesPerNode=20, impurity='gini') # The labelCol argument is the column we are trying to predict, featuresCol specifies the aggregated features column, maxDepth is stopping criterion for tree induction based on maximum depth of tree, minInstancesPerNode is stopping criterion for tree induction based on minimum number of samples in a node, and impurity is the impurity measure used to split nodes.
 
+# create a model by training the decision tree. This is done by executing it in a Pipeline
+pipeline = Pipeline(stages=[dt]) 
+model = pipeline.fit(trainingData)
+
+# make predictions using our test data set
+predictions.select("prediction", "label").write.save(path="file:///home/osboxes/Downloads/coursera/big-data-4/predictions.csv", format='com.databricks.spark.csv', header='true') 
+
+# Looking at the first ten rows in the prediction, we can see the prediction matches the input:
+predictions.select("prediction", "label").show(10)
+
+# Save predictions to CSV.
+predictions.select("prediction", "label").write.save(path="file://<?path>/predictions.csv", format='com.databricks.spark.csv', header='true')
 
 ```
 
