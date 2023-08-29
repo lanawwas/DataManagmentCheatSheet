@@ -74,6 +74,8 @@ df.printSchema()
 df.describe().toPandas().transpose
 ```
 
+# Data Manipulation 
+
 ### Remove all missing values from dataframe
 
 ```python
@@ -92,7 +94,7 @@ for x in imputeDF.columns:
     imputeDF = imputeDF.na.fill(meanValue, [x])
 ```
 
-### Select specific columns
+### Assign specific columns to a variable 
 
 ```python
 featureColumns = ['?çolumn1','?column2',....'?columnN']
@@ -102,6 +104,14 @@ featureColumns = ['?çolumn1','?column2',....'?columnN']
 ```python
 df = df.drop('?çolumn1','?column2',....'?columnN')
 ```
+
+### Create categorical variable from numerical variable based on specific threshold
+
+```python
+binarizer = Binarizer(threshold=<?threshold>, inputCol='column?', outputCol='label')
+binarizedDF = binarizer.transform(df)
+```
+
 
 # pyspark connect to SQL postgresql
 
