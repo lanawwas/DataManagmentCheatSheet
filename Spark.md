@@ -109,9 +109,14 @@ df = df.drop('?çolumn1','?column2',....'?columnN')
 
 ```python
 binarizer = Binarizer(threshold=<?threshold>, inputCol='column?', outputCol='label')
-binarizedDF = binarizer.transform(df)
+binarizedDF = binarizer.transform(df) # apply the transformation into binarizedDF 
 ```
+### Aggregated features into a single column: 
 
+```python
+assembler = VectorAssembler(inputCols=featureColumns, outputCol='features')
+assembled = assembler.transform(binarizedDF) # apply the transformation into assembled 
+```
 
 # pyspark connect to SQL postgresql
 
