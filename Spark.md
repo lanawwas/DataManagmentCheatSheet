@@ -118,6 +118,12 @@ assembler = VectorAssembler(inputCols=featureColumns, outputCol='features') # fe
 assembled = assembler.transform(binarizedDF) # apply the transformation into assembled 
 ```
 
+### Split data into training/test randomSplit()
+
+```python
+(trainingData, testData) = assembled.randomSplit([0.8,0.2], seed = 13234) #assembled is the dataframe, 0.8 and 0.2 are the ration between training to test, seed usually is not specified unless needed to be used again. 
+```
+
 # pyspark connect to SQL postgresql
 
 Correct configuration of postgresql or other sql jar in the env virtual 
