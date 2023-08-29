@@ -51,6 +51,12 @@ format='com.databricks.spark.csv', header='true', inferSchema='true' )
 
 # Show csv schema and explore 
 
+### Show the numbers of rows and columns in df
+
+```python
+df.count(), len(df.columns)
+```
+
 ### columns 
 
 ```python
