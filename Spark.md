@@ -94,7 +94,7 @@ for x in imputeDF.columns:
     imputeDF = imputeDF.na.fill(meanValue, [x])
 ```
 
-### Assign specific columns to a variable 
+### Assign a list of selected columns to a variable 
 
 ```python
 featureColumns = ['?çolumn1','?column2',....'?columnN']
@@ -114,7 +114,7 @@ binarizedDF = binarizer.transform(df) # apply the transformation into binarizedD
 ### Aggregated features into a single column: 
 
 ```python
-assembler = VectorAssembler(inputCols=featureColumns, outputCol='features')
+assembler = VectorAssembler(inputCols=featureColumns, outputCol='features') # featureColumns is the list of selected columns from before, see assign specific columns to a variable
 assembled = assembler.transform(binarizedDF) # apply the transformation into assembled 
 ```
 
