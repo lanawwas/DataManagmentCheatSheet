@@ -79,7 +79,7 @@ df.describe().toPandas().transpose
 ### Remove all missing values from dataframe
 
 ```python
-removeAllDF= df.na.drop()
+df = df.na.drop()
 ```
 
 ### Replace missing values with the column mean
