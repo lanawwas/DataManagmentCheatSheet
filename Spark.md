@@ -124,6 +124,14 @@ assembled = assembler.transform(binarizedDF) # apply the transformation into ass
 (trainingData, testData) = assembled.randomSplit([0.8,0.2], seed = 13234) #assembled is the dataframe, 0.8 and 0.2 are the ration between training to test, seed usually is not specified unless needed to be used again. 
 ```
 
+### Decision Tree 
+
+```python
+dt = DecisionTreeClassifier(labelCol='label', featuresCol="features", maxDepth=5, minInstancesPerNode=20, impurity='gini') # The labelCol argument is the column we are trying to predict, featuresCol specifies the aggregated features column, maxDepth is stopping criterion for tree induction based on maximum depth of tree, minInstancesPerNode is stopping criterion for tree induction based on minimum number of samples in a node, and impurity is the impurity measure used to split nodes.
+
+
+```
+
 # pyspark connect to SQL postgresql
 
 Correct configuration of postgresql or other sql jar in the env virtual 
