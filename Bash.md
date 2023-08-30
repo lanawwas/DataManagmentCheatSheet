@@ -18,7 +18,7 @@ mc
 
 [Reference](https://linuxtect.com/how-to-select-all-in-vim-vi/)
 
-#Then gg command is to move the cursor to the start of the file
+### Then gg command is to move the cursor to the start of the file
 
 ``` 
 gg
@@ -26,24 +26,24 @@ gg
 ```
 
 
-#The yy command is used to yank or copy the current line, but providing the line count can select and copy the number of lines specified 
+### The yy command is used to yank or copy the current line, but providing the line count can select and copy the number of lines specified 
 
 ``` 
 yy 
 
 ```
 
- #Select and Delete All Lines
+ ### Select and Delete All Lines
 
 ```
 :%d
 ```
- #Select and Copy All Lines
+ ### Select and Copy All Lines
 
 ```
 :%y
 ```
-#Go to the end of the file, use capital G
+### Go to the end of the file, use capital G
 ```
 G
 ```
