@@ -130,7 +130,9 @@ Got the user input: https://stackoverflow.com/questions/5542016/bash-user-input-
 
 ### Text file to show and follow updates 
 
+```bash
 tail -f file.txt: 
+```
 
 
 ### Count number of files in a directory
