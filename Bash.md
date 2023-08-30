@@ -124,28 +124,32 @@ https://docutils.sourceforge.io/docs/ref/rst/directives.html#default-role
 Reference and Custom anchor
 https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#links-to-sections-in-the-same-document
 
-# Bash .sh scripting: 
+### Bash .sh scripting: 
 
 Got the user input: https://stackoverflow.com/questions/5542016/bash-user-input-if
 
-# Text file follow with updates 
+### Text file to show and follow updates 
 
 tail -f file.txt: 
 
 
-**Count number of files in directory**
+### Count number of files in a directory
 
+```bash
 ls -1 | wc -l
+```
 
-**Show directory size**
+### Show directory size
 
+```bash
 du -bch
-
+```
 Or
-
+```bash
 Ls -lh
+```
 
-**Show Ubuntu Version**
+### Show Ubuntu Version
 
 ```bash
  lsb_release -a
