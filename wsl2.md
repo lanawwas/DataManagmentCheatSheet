@@ -8,3 +8,11 @@ swap=0
 ````
 
 reference: https://ryanharrison.co.uk/2021/05/13/wsl2-better-managing-system-resources.html
+
+### Mounting an external USB drive to WSL2
+
+```bash
+sudo mount -t drvfs ?<drive?letter?windows>: /mnt/d
+```
+
+reference: https://learn.microsoft.com/en-us/windows/wsl/wsl2-mount-disk
