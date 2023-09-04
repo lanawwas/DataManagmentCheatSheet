@@ -92,5 +92,7 @@ store the correlation plot matrix in a gg element
 
 
 reference: http://fhollenbach.org/OLD_polisci209_DONOTUSE/img/images/notes-18-correlation-r.pdf
+https://cran.r-project.org/web/packages/ggcorrplot/readme/README.html
+
 # r connect to SQL postgresql
 
