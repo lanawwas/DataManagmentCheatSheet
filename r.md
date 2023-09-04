@@ -76,5 +76,21 @@ Filter DataFrame by column name column2 and column3.
 ```r
 subset(df,?column1 == '?value',select = c('column2','column3'))
 ```
+
+### Correlation calcualtion and plot 
+
+Install the ggcorrplot package to use for the correlation calculations and plot 
+```r
+install.packages("ggcorrplot")
+```
+calculate the correlation and store in cors as a matrix with numbers 
+```r
+cors <- cor(df, user = "pairwise.complete.obs")
+```
+store the correlation plot matrix in a gg element 
+``
+
+
+reference: http://fhollenbach.org/OLD_polisci209_DONOTUSE/img/images/notes-18-correlation-r.pdf
 # r connect to SQL postgresql
 
