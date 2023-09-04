@@ -60,6 +60,8 @@ ssh -J
 **rsync commands**
 ----
 
+https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories#using-rsync-to-sync-with-a-remote-system
+
 **mv commands**
 ----
 
