@@ -143,7 +143,7 @@ predictions.select("prediction", "label").show(10)
 predictions.select("prediction", "label").write.save(path="file://<?path>/predictions.csv", format='com.databricks.spark.csv', header='true')
 
 ```
-### Evaluation of Decision Tree prediction with Confusion matrix and accurcy calcuation
+### Evaluation of Decision Tree prediction with accurcy calcuation
 
 ```python
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator # import evaluator
@@ -161,7 +161,28 @@ accuracy = evaluator.evaluate(predictions)
 print("Accuracy = %g " % (accuracy))
 
 ```
+### Evaluation of Decision Tree prediction with confusion matrix 
 
+```python
+from pyspark.mllib.evaluation import MulticlassMetrics # import metrics for confusion matrix
+
+# Display confusion matrix. The MulticlassMetrics class can be used to generate a confusion matrix of our classifier model. However, unlike MulticlassClassificationEvaluator, MulticlassMetrics works with RDDs of numbers and not DataFrames, so we need to convert our predictions DataFrame into an RDD. If we use the rdd attribute of predictions, we see this is an RDD of Rows:
+
+predictions.rdd.take(2)
+
+#Instead, we can map the RDD to tuple to get an RDD of numbers:
+
+predictions.rdd.map(tuple).take(2)
+
+# Create an instance of MulticlassMetrics with this RDD:
+
+metrics = MulticlassMetrics(predictions.rdd.map(tuple))
+
+# The confusionMatrix() function returns a Spark Matrix, which we can convert to a Python Numpy array, and transpose to view:
+
+metrics.confusionMatrix().toArray().transpose()
+
+```
 
 
 # pyspark connect to SQL postgresql
