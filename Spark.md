@@ -143,6 +143,26 @@ predictions.select("prediction", "label").show(10)
 predictions.select("prediction", "label").write.save(path="file://<?path>/predictions.csv", format='com.databricks.spark.csv', header='true')
 
 ```
+### Evaluation of Decision Tree prediction with Confusion matrix and accurcy calcuation
+
+```python
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator # import evaluator
+from pyspark.mllib.evaluation import MulticlassMetrics # import metrics for confusion matrix
+
+# Select the output from prediction and label column (see prediction before) from the df and assign it in predictions variable
+
+predictions = predictions.select("prediction", "label")
+
+# Create an instance of MulicalssClassificationEvaluator to determince accuracy of predictions
+
+evaluator = MulticlassClassificationEvaluator(labelCol='label', predictionCol="prediction", metricName="weightedPrecision")  #first two argument specify the names of the label and prediction columns, and the third argument specifies that we want a weighted precision.
+
+accuracy = evaluator.evaluate(predictions)
+print("Accuracy = %g " % (accuracy))
+
+```
+
+
 
 # pyspark connect to SQL postgresql
 
