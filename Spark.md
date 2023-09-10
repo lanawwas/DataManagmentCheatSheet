@@ -200,6 +200,53 @@ metrics.confusionMatrix().toArray().transpose()
 
 ```
 
+### K-means algorithim using elbow method: 
+
+```python
+# Select the desired features from the dataset
+featuredUsed = ('column1', 'column2', 'column3', 'column4', 'columnN')
+
+# User an assembler vector to create an array of the columns we want to combine, and use VectorAssembler to create the vector column
+assembler = VectorAssembler(inputCols=featuredUsed, outputCol='features_unscaled')
+assembled = assembler.transform(workingDF)
+
+# StandardScaler to scale the data
+scaler = StandardScaler(inputCol='features_unscaled', outputCol='features', withStd=True, withMean=True) #The withMean argument specifies to center the data with the mean before scaling, and withStd specifies to scale the data to the unit standard deviation.
+scalerModel = scaler.fit(assembled)
+scaledData = scalerModel.transform(assembled)
+
+# Create elbow plot. The k-means algorithm requires that the value of k, the number of clusters, to be specified.  To determine a good value for k, we will use the “elbow” method.  This method involves applying k-means, using different values for k, and calculating the within-cluster sum-of-squared error (WSSE).  Since this means applying k-means multiple times, this process can be very compute-intensive.  To speed up the process, we will use only a subset of the dataset.  We will take every third sample from the dataset to create this subset
+
+%run -i notebooks/utils.py #run a customized function elbow alogrithim 
+
+scaledData = scaledData.select("features", "rowID")
+elbowset = scaledData.filter((scaledData.rowID % 3) == 0).select("features")
+elbowset.persist() #The last line calls the persist() method to tell Spark to keep the data in memory (if possible), which will speed up the computations.
+
+# Compute the k-means clusters for k = 2 to 30 to create an elbow plot:
+clusters = range(2,31)
+wsseList = elbow(elbowset, clusters)
+elbow_plot(wsseList, clusters) # plot the function elbow
+
+# The values for k are plotted against the WSSE values, and the elbow, or bend in the curve, provides a good estimate for the value for k.  In this plot, we see that the elbow in the curve is between 10 and 15, so let's choose k = 12.  We will use this value to set the number of clusters for k-means.
+
+scaledDataFeat = scaledData.select("features")
+scaledDataFeat.persist()
+
+kmeans = KMeans(k=12, seed=1)
+model = kmeans.fit(scaledDataFeat)
+transformed = model.transform(scaledDataFeat) # The first line creates a new KMeans instance with 12 clusters and a specific seed value. (As in previous hands-on activities, we use a specific seed value for reproducible results.) The second line fits the data to the model, and the third applies the model to the data.
+
+# Once the model is created, we can determine the center measurement of each cluster:
+
+centers = model.clusterCenters()
+centers
+
+# Create parallel plots of clusters and analysis.
+
+P = pd_centers(featuredUsed, centers)
+parallel_plot(P[P['?column'] < -0.5], P)
+```
 
 # pyspark connect to SQL postgresql
 
