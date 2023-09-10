@@ -82,6 +82,12 @@ df.describe().toPandas().transpose
 df = df.na.drop()
 ```
 
+### Filter data using filter() command
+
+```python
+filterDF = df.filter((df.rowID % 10) == 0) #Using a one-tenth of the data subset by calling filter() and using the rowID column
+```
+
 ### Replace missing values with the column mean
 
 ```python
