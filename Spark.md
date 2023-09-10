@@ -42,6 +42,12 @@ sqlContext = SQLContext(sc)
 ```
 reference : https://medium.com/sicara/get-started-pyspark-jupyter-guide-tutorial-ae2fe84f594f
 
+# pyspark run a custom fuction stored as .py 
+
+```python
+%run -i ./<path?to?the?funtion>.py
+```
+
 # pyspark read data from csv file
 
 ```python
