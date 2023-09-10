@@ -83,11 +83,15 @@ df = df.na.drop()
 ```
 
 ### Filter data using filter() command
+#### Using a one-tenth of the data subset by calling filter() and using the rowID column
+```python
+filterDF = df.filter((df.rowID % 10) == 0) 
+```
+#### Filter data and count how many values are equal to 0.0 
 
 ```python
-filterDF = df.filter((df.rowID % 10) == 0) #Using a one-tenth of the data subset by calling filter() and using the rowID column
+filteredDF.filter(filteredDF.rain_accumulation == 0.0).count()
 ```
-
 ### Replace missing values with the column mean
 
 ```python
