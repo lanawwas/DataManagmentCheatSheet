@@ -152,6 +152,13 @@ Or
 ```bash
 Ls -lh
 ```
+### Calculate total directories size and sort from least to biggest
+
+
+```bash
+du -sh /path/to/directory/* | sort -h
+
+``` 
 
 ### Show Ubuntu Version
 
