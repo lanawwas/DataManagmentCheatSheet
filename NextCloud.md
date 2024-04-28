@@ -12,7 +12,7 @@
 
 Make sure that www-data is the owner for /var/www/nextcloud/ 
 
-[Reference#]([https://tecadmin.net/switch-between-multiple-php-version-on-ubuntu/](https://help.nextcloud.com/t/update-to-nextcloud-12-03-var-www-permissions-error/21243)) 
+[Reference#](https://tecadmin.net/switch-between-multiple-php-version-on-ubuntu/](https://help.nextcloud.com/t/update-to-nextcloud-12-03-var-www-permissions-error/21243) 
 
 
 ```bash
