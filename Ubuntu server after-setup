@@ -31,6 +31,100 @@ Change the congiuration in etc/ssh/sshd_config :
 
 Install fail2ban
 
+Installation
+
+    Update the System:
+    Begin by updating your system to ensure you have the latest package listings.
+
+    bash
+    sudo apt update && sudo apt upgrade
+
+Install Fail2ban:
+Install Fail2ban using the package manager.
+
+bash
+sudo apt install fail2ban
+
+Start and Enable Fail2ban:
+Start the Fail2ban service and enable it to start on boot.
+
+bash
+sudo systemctl start fail2ban
+sudo systemctl enable fail2ban
+
+Configuration
+
+    Copy Default Configuration:
+    Copy the default configuration file to create a local configuration file that you can modify.
+
+    bash
+    sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+Edit Local Configuration:
+Open the jail.local file in a text editor to configure Fail2ban settings.
+
+bash
+sudo nano /etc/fail2ban/jail.local
+
+Basic Settings:
+
+    ignoreip: Specify IP addresses that should never be banned (e.g., your own IP).
+
+    text
+    ignoreip = 127.0.0.1/8 ::1
+
+bantime: Set the duration for which an IP is banned (e.g., 1 day).
+
+text
+bantime = 1d
+
+findtime: Specify the time window for counting failed login attempts.
+
+text
+findtime = 600
+
+maxretry: Set the number of allowed failed attempts before banning.
+
+text
+maxretry = 3
+
+Configure Jails:
+Ensure the SSH jail is enabled to protect against unauthorized SSH access.
+
+text
+[sshd]
+enabled = true
+port = ssh
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+
+Email Notifications (Optional):
+If you have a mail service configured, set up email notifications for banned IPs.
+
+text
+destemail = your-email@example.com
+action = %(action_mw)s
+
+Restart Fail2ban:
+After making changes, restart the Fail2ban service to apply the new configuration.
+
+bash
+sudo systemctl restart fail2ban
+
+Verification
+
+    Check Fail2ban Status:
+    Verify that Fail2ban is running correctly.
+
+    bash
+    sudo systemctl status fail2ban
+
+Check iptables Rules:
+Review the iptables rules to ensure Fail2ban has added the necessary rules.
+
+bash
+sudo iptables -L
+
 https://linuxhandbook.com/fail2ban-basic/
 
 UFU settings to allow cusotm port for ssh after enable
