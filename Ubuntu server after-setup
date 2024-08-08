@@ -127,6 +127,13 @@ sudo iptables -L
 
 https://linuxhandbook.com/fail2ban-basic/
 
+-------------------
+Install and configure to install stable update automaticlly 
+sudo apt install -y unattended-upgrades
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+
+--------------------
+
 UFU settings to allow cusotm port for ssh after enable
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04
