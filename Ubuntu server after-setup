@@ -1,12 +1,23 @@
+### Update and install build essential and software propertites common
 sudo apt update && sudo apt dist-upgrade -y
 sudo apt install build-essential
 sudo apt install software-properties-common
+
+### Hardene ssh setting with pub/private key authentication 
+
 sudo vim /etc/ssh/sshd.config
 ssh-keygen -t rsa -b 4096
 
 https://linuxize.com/post/how-to-install-virtualbox-guest-additions-in-ubuntu/
 sudo adduser lanawwas vboxsf
 
+On local add the public key to remote 
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub remoteUser@remoteIP -pSSHPort
+
+OR
+
+cat ~/.ssh/id_rsa.pub | ssh remoteUser@remoteIP -psSShPort 'cat >> ~/.ssh/authorized_keys'
 
 On remote after copying rsa.pub key of the local machine to remote by scp, you can add the identiy to the remote authrised
 
