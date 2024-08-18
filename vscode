@@ -1,0 +1,35 @@
+
+To save git bash hisotry in Vscode
+Create the following files
+
+~/.bash_profile
+~/.bashrc
+
+And put the following line in both of them
+
+PROMPT_COMMAND='history -a'
+
+To do this from the console (Git Bash) itself, use the following commands:
+
+echo "PROMPT_COMMAND='history -a'" >> ~/.bash_profile
+echo "PROMPT_COMMAND='history -a'" >> ~/.bashrc
+
+What history -a means
+
+From the history --help command
+
+    -a append history lines from this session to the history file
+
+What is PROMPT_COMMAND?
+
+    Bash provides an environment variable called PROMPT_COMMAND. The contents of this variable are executed as a regular Bash command just before Bash displays a prompt.
+
+Difference between .bash_profile and .bashrc
+
+.bash_profile is executed for login shells, while .bashrc is executed for interactive non-login shells.
+
+When you login (type username and password) via console, either sitting at the machine, or remotely via ssh: .bash_profile is executed to configure your shell before the initial command prompt.
+
+But, if you’ve already logged into your machine and open a new terminal window (xterm) then .bashrc is executed before the window command prompt. .bashrc is also run when you start a new bash instance by typing /bin/bash in a terminal.
+
+On OS X, Terminal by default runs a login shell every time, so this is a little different to most other systems, but you can configure that in the preferences.
