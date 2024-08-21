@@ -1,6 +1,8 @@
 Python
 --------------------
 
+## Setup and Configurations 
+
 ### Amend txt and list:
 
 https://pythonprinciples.com/blog/lists-of-strings-in-python/
@@ -39,6 +41,11 @@ Or
 
 ```bash
 pip install -r requirements.txt
+```
+
+## Data manipulation
+
+[pysprak](/Spark.md#data-manipulation)
 
 ## Refrences: 
 [reference1: python venv documentation](https://docs.python.org/3/library/venv.html)
