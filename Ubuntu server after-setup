@@ -40,6 +40,73 @@ Change the congiuration in etc/ssh/sshd_config :
 3. Disable password-based logins
 4.Disable root access to your server and use a regular account with the
 
+1. Authentication
+
+text
+# Disable password authentication (ensure key-based authentication is working first)
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+
+# Enable public key authentication
+PubkeyAuthentication yes
+
+2. Root Access
+
+text
+# Never allow root SSH login
+PermitRootLogin no
+
+3. Limit Access
+
+text
+# Restrict user SSH access
+AllowUsers your_admin_user
+# or to a group:
+# AllowGroups sshusers
+
+4. Login/Brute Force Mitigation
+
+text
+# Limit number of authentication attempts
+MaxAuthTries 3
+
+# Disconnect idle sessions
+ClientAliveInterval 300
+ClientAliveCountMax 2
+
+5. Network and Port
+
+6. Forwarding and Extras
+
+text
+# Disable X11 forwarding (unless you require it)
+X11Forwarding no
+
+7. Cryptography: Use Strong Algorithms
+
+Add these for ciphers and key exchange:
+
+text
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com
+KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+
+8. Logging
+
+    Increase log level for better monitoring:
+
+text
+LogLevel VERBOSE
+
+9. Advanced/Optional
+
+    Implement Two-Factor Authentication (2FA) via PAM
+
+    Use Fail2Ban to block brute-force attempts
+
+
+
 Install fail2ban
 
 Installation
