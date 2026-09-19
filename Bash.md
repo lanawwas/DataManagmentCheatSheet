@@ -96,11 +96,15 @@ create new directory mkdir
 
 delete file 
 ---
-rm -rf 
+```bash 
+rm -rf
+```
 
 delete directory 
 
-rm -rdf 
+```bash
+rm -rdf
+```
 
 change owner chown
 
