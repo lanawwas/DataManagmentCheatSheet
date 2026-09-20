@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/mnt/Data/open-webui-data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://127.0.0.1:11434
+      - ANONYMIZED_TELEMETRY=False
+      - RAG_EMBEDDING_ENGINE=ollama
+      - RAG_EMBEDDING_MODEL=llama3.2
+
+  ollamaAMD:
+    image: docker.io/ollama/ollama:latest
+    container_name: ollamaAMD
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - /var/mnt/Data/ollama-models:/root/.ollama
+    devices:
+      - /dev/dri
+    security_opt:
+      - label=disable
+    environment:
+      - OLLAMA_IGPU_ENABLE=1
+      - OLLAMA_NO_CLOUD=true
+      - OLLAMA_ORIGINS="moz-extension://*"
+
+  ollama:
+    image: docker.io/ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - /var/mnt/Data/ollama-models:/root/.ollama
+    devices:
+      - nvidia.com/gpu=all
+    security_opt:
+      - label=disable
+    environment:
+      - OLLAMA_NO_CLOUD=true
+      - OLLAMA_ORIGINS="moz-extension://*"
