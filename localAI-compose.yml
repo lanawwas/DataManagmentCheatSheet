@@ -9,10 +9,9 @@ services:
     volumes:
       - /var/mnt/Data/open-webui-data:/app/backend/data:z
     environment:
-      - OLLAMA_BASE_URLS=http://127.0.0.1:11434;http://127.0.0.1:11435
+      - OLLAMA_BASE_URLS=http://127.0.0.1:11434;http://127.0.0.1:11435;http://127.0.0.1:11436
       - ANONYMIZED_TELEMETRY=False
       - RAG_EMBEDDING_ENGINE=ollama
-      - RAG_EMBEDDING_MODEL=llama3.2
 
   ollamaAMD:
     image: docker.io/ollama/ollama:latest
@@ -31,6 +30,19 @@ services:
       - OLLAMA_NO_CLOUD=true
       - OLLAMA_ORIGINS=moz-extension://*
 
+  ollamaCPU:
+    image: docker.io/ollama/ollama:latest
+    container_name: ollamaCPU
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11436:11434"
+    volumes:
+      - /var/mnt/Data/ollama-models:/root/.ollama:z
+    security_opt:
+      - label=disable
+    environment:
+      - OLLAMA_NO_CLOUD=true
+      - OLLAMA_ORIGINS=moz-extension://*
   ollama:
     image: docker.io/ollama/ollama:latest
     container_name: ollama
@@ -42,6 +54,7 @@ services:
     security_opt:
       - label=disable
     environment:
-      - NVIDIA_VISIBLE_DEVICES=all
       - OLLAMA_NO_CLOUD=true
       - OLLAMA_ORIGINS=moz-extension://*
+    devices:
+      - nvidia.com/gpu=all
