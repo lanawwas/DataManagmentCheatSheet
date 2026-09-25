@@ -5,11 +5,12 @@ services:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
     restart: unless-stopped
-    network_mode: host
+    ports:
+      - "127.0.0.1:8080:8080"
     volumes:
       - /var/mnt/Data/open-webui-data:/app/backend/data:z
     environment:
-      - OLLAMA_BASE_URLS=http://127.0.0.1:11434;http://127.0.0.1:11435;http://127.0.0.1:11436
+      - OLLAMA_BASE_URLS=http://ollama:11434;http://ollamaAMD:11434;http://ollamaCPU:11434
       - ANONYMIZED_TELEMETRY=False
       - RAG_EMBEDDING_ENGINE=ollama
 
@@ -28,7 +29,7 @@ services:
     environment:
       - OLLAMA_IGPU_ENABLE=1
       - OLLAMA_NO_CLOUD=true
-      - OLLAMA_ORIGINS=moz-extension://*
+      - OLLAMA_ORIGINS=moz-extension://*,vscode-webview://*,http://localhost:8080,http://127.0.0.1:8080
 
   ollamaCPU:
     image: docker.io/ollama/ollama:latest
@@ -42,7 +43,8 @@ services:
       - label=disable
     environment:
       - OLLAMA_NO_CLOUD=true
-      - OLLAMA_ORIGINS=moz-extension://*
+      - OLLAMA_ORIGINS=moz-extension://*,vscode-webview://*,http://localhost:8080,http://127.0.0.1:8080
+
   ollama:
     image: docker.io/ollama/ollama:latest
     container_name: ollama
@@ -55,6 +57,6 @@ services:
       - label=disable
     environment:
       - OLLAMA_NO_CLOUD=true
-      - OLLAMA_ORIGINS=moz-extension://*
+      - OLLAMA_ORIGINS=moz-extension://*,vscode-webview://*,http://localhost:8080,http://127.0.0.1:8080
     devices:
       - nvidia.com/gpu=all
