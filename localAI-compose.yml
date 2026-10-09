@@ -13,6 +13,7 @@ services:
       - OLLAMA_BASE_URLS=http://ollama:11434;http://ollamaAMD:11434;http://ollamaCPU:11434
       - ANONYMIZED_TELEMETRY=False
       - RAG_EMBEDDING_ENGINE=ollama
+      - OFFLINE_MODE=true
 
   ollamaAMD:
     image: docker.io/ollama/ollama:latest
@@ -58,5 +59,55 @@ services:
     environment:
       - OLLAMA_NO_CLOUD=true
       - OLLAMA_ORIGINS=moz-extension://*,vscode-webview://*,http://localhost:8080,http://127.0.0.1:8080
+      - OLLAMA_CONTEXT_LENGTH=4096
+      - OLLAMA_NUM_PARALLEL=1
+      - OLLAMA_MAX_LOADED_MODELS=1
+      - OLLAMA_KEEP_ALIVE=10m
     devices:
       - nvidia.com/gpu=all
+  
+  comfyui:
+    image: localhost/comfyui-local:gpu-only-v1
+    container_name: comfyui
+    restart: "no"
+    userns_mode: "keep-id"
+    ports:
+      - "127.0.0.1:8188:8188"
+    networks:
+      - comfyui-isolated
+    volumes:
+      - /var/mnt/Data/comfyui/models:/opt/ComfyUI/models:z
+      - /var/mnt/Data/comfyui/output:/opt/ComfyUI/output:z
+      - /var/mnt/Data/comfyui/input:/opt/ComfyUI/input:z
+      - /var/mnt/Data/comfyui/user:/opt/ComfyUI/user:z
+      - /var/mnt/Data/comfyui/temp:/opt/ComfyUI/temp:z
+    security_opt:
+      - label=disable
+      - no-new-privileges:true
+    environment:
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    devices:
+      - nvidia.com/gpu=all
+    command:
+      - --listen
+      - "0.0.0.0"
+      - --port
+      - "8188"
+      - --reserve-vram
+      - "0.5"
+      - --cache-none
+      - --preview-method
+      - none
+      - --disable-all-custom-nodes
+      - --offline
+      - --disable-auto-launch
+      - --temp-directory
+      - /opt/ComfyUI/temp/session
+
+networks:
+  comfyui-isolated:
+    name: comfyui-isolated
+    driver: bridge
+    internal: true
