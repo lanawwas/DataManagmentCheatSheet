@@ -1,4 +1,133 @@
 services:
+  llamaNVIDIA:
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda
+    container_name: llamaNVIDIA
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8082:8080"
+    volumes:
+      - /var/mnt/Data/ollama-models:/ollama:ro,z
+      - /var/mnt/Data/llama-models:/models:ro,z
+    devices:
+      - nvidia.com/gpu=all
+    security_opt:
+      - label=disable
+      - no-new-privileges:true
+    environment:
+      - LLAMA_ARG_HOST=0.0.0.0
+      - LLAMA_ARG_PORT=8080
+    command:
+      - "--models-dir"
+      - "/models"
+      - "--models-max"
+      - "1"
+      - "--models-autoload"
+      - "--webui"
+      - "--cors-origins"
+      - "localhost"
+      - "--parallel"
+      - "1"
+      - "--batch-size"
+      - "256"
+      - "--ubatch-size"
+      - "64"
+      - "--cache-ram"
+      - "0"
+      - "--device"
+      - "CUDA0"
+      # Let llama.cpp choose the layer placement.
+      - "--n-gpu-layers"
+      - "auto"
+      - "--fit"
+      - "on"
+      # Aim to leave 0.2 GiB free for desktop/runtime headroom.
+      - "--fit-target"
+      - "256"
+      - "--jinja"
+      - "--reasoning"
+      - "off"
+      - "--temp"
+      - "0.6"
+      - "--top-k"
+      - "20"
+      - "--top-p"
+      - "0.95"
+      - "--min-p"
+      - "0.0"
+      - "--repeat-penalty"
+      - "1.0"
+      - "--offline"
+  llamaAMD:
+    image: ghcr.io/ggml-org/llama.cpp:server-vulkan
+    container_name: llamaAMD
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      # Existing Ollama model weights.
+      - /var/mnt/Data/ollama-models:/ollama:ro,z
+      # Named GGUF links already created.
+      - /var/mnt/Data/llama-models:/models:ro,z
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    group_add:
+      - keep-groups
+    security_opt:
+      - label=disable
+      - no-new-privileges:true
+    environment:
+      # Configure here instead of duplicating in command.
+      - LLAMA_ARG_HOST=0.0.0.0
+      - LLAMA_ARG_PORT=8080
+    command:
+      # Router: discover your named GGUF models.
+      - "--models-dir"
+      - "/models"
+      # Keep only one chat model resident.
+      - "--models-max"
+      - "1"
+      - "--models-autoload"
+      # Web UI and API.
+      - "--webui"
+      # Restrict cross-origin browser access.
+      - "--cors-origins"
+      - "localhost"
+      # Single-user inference.
+      - "--parallel"
+      - "1"
+      # Logical and physical prompt-processing batches.
+      - "--batch-size"
+      - "256"
+      - "--ubatch-size"
+      - "64"
+      # Avoid the additional large host prompt cache.
+      - "--cache-ram"
+      - "0"
+      # Confirm this device ID with --list-devices.
+      - "--device"
+      - "Vulkan0"
+      # Partial iGPU offload; remaining layers execute on CPU.
+      - "--n-gpu-layers"
+      - "12"
+      # Chat-template and structured tool-call support.
+      - "--jinja"
+      # Disable reasoning by default.
+      - "--reasoning"
+      - "off"
+      # Initial Qwen-oriented sampling defaults.
+      - "--temp"
+      - "0.6"
+      - "--top-k"
+      - "20"
+      - "--top-p"
+      - "0.95"
+      - "--min-p"
+      - "0.0"
+      - "--repeat-penalty"
+      - "1.0"
+      # Local model loading only.
+      - "--offline"
+
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
@@ -11,11 +140,11 @@ services:
       - OLLAMA_BASE_URLS=http://ollama:11434;http://ollamaAMD:11434;http://ollamaCPU:11434
       - ANONYMIZED_TELEMETRY=False
       - RAG_EMBEDDING_ENGINE=ollama
-      - RAG_OLLAMA_BASE_URL=http://ollamaCPU:11434
+      - RAG_OLLAMA_BASE_URL=http://ollamaAMD:11434
       - RAG_EMBEDDING_MODEL=qwen3-embedding:0.6b
       - RAG_EMBEDDING_BATCH_SIZE=1
       - ENABLE_OPENAI_API=true
-      - OPENAI_API_BASE_URL=http://vllm:8000/v1
+      - OPENAI_API_BASE_URL=http://llamaNVIDIA:8080/v1
       - OPENAI_API_KEY=unused
       - AUDIO_STT_ENGINE=whisper
       - WHISPER_MODEL=large-v3 
